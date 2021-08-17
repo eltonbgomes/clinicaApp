@@ -1,12 +1,19 @@
 package io.github.eltonbgomes.clinica.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Paciente {
 
     @Id
@@ -22,6 +29,12 @@ public class Paciente {
     @Column(nullable = false, length = 3)
     private Integer idade;
 
-    @Column(name = "data_cadastro")
+    @Column(name = "data_cadastro", updatable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
+
+    @PrePersist
+    public void prePersist(){
+        setDataCadastro(LocalDate.now());
+    }
 }

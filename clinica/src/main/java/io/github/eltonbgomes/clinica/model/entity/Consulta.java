@@ -21,7 +21,7 @@ public class Consulta {
     @JoinColumn(name = "id_medico")
     private Medico medico;
 
-    @Column(name = "data_cadastro")
+    @Column(name = "data_cadastro", updatable = false)
     private LocalDate dataCadastro;
 
     @Column(name = "data_consulta")

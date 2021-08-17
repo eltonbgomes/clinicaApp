@@ -25,7 +25,7 @@ public class Medico {
     @Column(nullable = false, length = 3)
     private Integer idade;
 
-    @Column(name = "data_cadastro")
+    @Column(name = "data_cadastro", updatable = false)
     private LocalDate dataCadastro;
 
 }
