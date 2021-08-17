@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/pacientes")
 public class PacienteController {
@@ -20,7 +22,7 @@ public class PacienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Paciente salvar(@RequestBody Paciente paciente){
+    public Paciente salvar(@RequestBody @Valid Paciente paciente){
         return repository.save(paciente);
     }
 
@@ -28,7 +30,7 @@ public class PacienteController {
     public Paciente BuscarId(@PathVariable Integer id){
         return repository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
     }
 
     @DeleteMapping("{id}")
@@ -40,12 +42,12 @@ public class PacienteController {
                     repository.delete(paciente);
                     return  Void.TYPE;
                 })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editar(@PathVariable Integer id, @RequestBody Paciente pacienteEditado){
+    public void editar(@PathVariable Integer id, @RequestBody @Valid Paciente pacienteEditado){
         repository
                 .findById(id)
                 .map(paciente -> {
@@ -54,6 +56,6 @@ public class PacienteController {
                     paciente.setCpf(pacienteEditado.getCpf());
                     return repository.save(pacienteEditado);
                 })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
     }
 }
