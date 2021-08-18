@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 
 import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
+import { PacientesModule } from './pacientes/pacientes.module';
+import { MedicosModule } from './medicos/medicos.module';
+import { ConsultasModule } from './consultas/consultas.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TemplateModule
+    TemplateModule,
+    PacientesModule,
+    MedicosModule,
+    ConsultasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
