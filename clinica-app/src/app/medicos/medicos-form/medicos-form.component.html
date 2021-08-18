@@ -3,26 +3,26 @@
     <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
-    <form>
+    <form #medicoForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-1">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input type="text" class="form-control" disabled="true">
+                    <input type="text" class="form-control" disabled="true" [ngModel]="medico.id" name="id">
                 </div>
             </div>
 
             <div class="col-md-7">
                 <div class="form-group">
                     <label>Nome:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="medico.nome" name="nome">
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="form-group">
                     <label>CRM:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="medico.crm" name="crm">
                 </div>
             </div>
         </div>
@@ -30,21 +30,21 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>especialidade:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="medico.especialidade" name="especialidade">
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-group">
                     <label>idade:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="medico.idade" name="idade">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
                     <label>data cadastro:</label>
-                    <input type="text" class="form-control" disabled="true">
+                    <input type="text" class="form-control" disabled="true" [ngModel]="medico.dataCadastro" name="dataCadastro">
                 </div>
             </div>
         </div>

@@ -3,26 +3,26 @@
     <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
-    <form>
+    <form #pacienteForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-1">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input type="text" class="form-control" disabled="true">
+                    <input type="text" class="form-control" disabled="true" [ngModel]="paciente.id" name="id">
                 </div>
             </div>
 
             <div class="col-md-7">
                 <div class="form-group">
                     <label>Nome:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="paciente.nome" name="nome">
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="form-group">
                     <label>CPF:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="paciente.cpf" name="cpf">
                 </div>
             </div>
         </div>
@@ -30,14 +30,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>idade:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="paciente.idade" name="idade">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
                     <label>data cadastro:</label>
-                    <input type="text" class="form-control" disabled="true">
+                    <input type="text" class="form-control" disabled="true" [ngModel]="paciente.dataCadastro" name="dataCadastro">
                 </div>
             </div>
         </div>

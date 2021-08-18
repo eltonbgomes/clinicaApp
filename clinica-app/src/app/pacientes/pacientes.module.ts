@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { PacientesRoutingModule } from './pacientes-routing.module';
 import { PacientesFormComponent } from './pacientes-form/pacientes-form.component';
@@ -11,7 +12,8 @@ import { PacientesFormComponent } from './pacientes-form/pacientes-form.componen
   ],
   imports: [
     CommonModule,
-    PacientesRoutingModule
+    PacientesRoutingModule,
+    FormsModule
   ],
   exports: [
     PacientesFormComponent

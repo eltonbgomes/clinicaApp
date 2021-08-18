@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { MedicosRoutingModule } from './medicos-routing.module';
 import { MedicosFormComponent } from './medicos-form/medicos-form.component';
@@ -11,7 +12,8 @@ import { MedicosFormComponent } from './medicos-form/medicos-form.component';
   ],
   imports: [
     CommonModule,
-    MedicosRoutingModule
+    MedicosRoutingModule,
+    FormsModule
   ],
   exports: [
     MedicosFormComponent

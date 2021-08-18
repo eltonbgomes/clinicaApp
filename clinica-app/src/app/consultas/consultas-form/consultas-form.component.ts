@@ -9,9 +9,12 @@ import { Consulta } from '../consulta';
 })
 export class ConsultasFormComponent implements OnInit {
 
-  consulta: Consulta = new Consulta;
+  consulta: Consulta;
 
-  constructor() { }
+  constructor() { 
+    this.consulta = new Consulta();
+    this.consulta.medico = 'Elton';
+  }
 
   ngOnInit(): void {
   }

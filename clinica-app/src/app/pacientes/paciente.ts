@@ -2,6 +2,6 @@ export class Paciente {
     id!: number;
     nome!: string;
     cpf!: string;
-    idade!: number;
+    idade!: string;
     dataCadastro!: string;
 }
