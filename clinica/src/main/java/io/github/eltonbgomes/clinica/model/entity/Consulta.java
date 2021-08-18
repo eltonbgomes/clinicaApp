@@ -34,5 +34,5 @@ public class Consulta {
     private LocalDate dataConsulta;
 
     @Column(name = "hora_consulta")
-    private String horaColsulta;
+    private String horaConsulta;
 }

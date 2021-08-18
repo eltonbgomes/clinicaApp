@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/medicos")
+@CrossOrigin("http://localhost:4200")
 public class MedicoController {
 
     private final MedicoRepository repository;

@@ -56,5 +56,4 @@ public class ConsultaController {
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Consulta não encontrado"));
     }
-
 }
