@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ApplicationControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErrors handleValidationErrors(MethodArgumentNotValidException ex){
+    public ApiErrors handleValidationErros(MethodArgumentNotValidException ex){
         BindingResult bindingResult = ex.getBindingResult();
         List<String> messages = bindingResult.getAllErrors()
                 .stream()

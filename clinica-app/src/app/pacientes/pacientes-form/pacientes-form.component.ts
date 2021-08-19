@@ -11,6 +11,8 @@ import { PacientesService } from '../../pacientes.service';
 export class PacientesFormComponent implements OnInit {
 
   paciente: Paciente;
+  success: boolean = false;
+  errors!: String[];
 
   constructor(private service: PacientesService) {
     this.paciente = new Paciente();
@@ -23,7 +25,12 @@ export class PacientesFormComponent implements OnInit {
     this.service
       .salvar(this.paciente)
       .subscribe(Response => {
-        console.log(Response);
+        this.success = true;
+        this.errors = []; 
+      }, errorResponse => {
+        this.success = false;
+        this.errors = errorResponse.error.errors;
+        console.log(this.errors);
       })
   };
 }
