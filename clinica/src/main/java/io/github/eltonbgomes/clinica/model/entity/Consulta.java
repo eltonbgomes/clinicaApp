@@ -22,7 +22,7 @@ public class Consulta {
     @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
 
-    @Column(name = "num_consultorio")
+    @Column(name = "num_consultorio", nullable = false)
     private Integer NumConsultorio;
 
     @Column(name = "data_cadastro", updatable = false)
@@ -35,4 +35,9 @@ public class Consulta {
 
     @Column(name = "hora_consulta")
     private String horaConsulta;
+
+    @PrePersist
+    public void prePersist(){
+        setDataCadastro(LocalDate.now());
+    }
 }

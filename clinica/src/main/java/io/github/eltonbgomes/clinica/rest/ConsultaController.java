@@ -1,14 +1,20 @@
 package io.github.eltonbgomes.clinica.rest;
 
 import io.github.eltonbgomes.clinica.model.entity.Consulta;
+import io.github.eltonbgomes.clinica.model.entity.Medico;
 import io.github.eltonbgomes.clinica.model.entity.Paciente;
 import io.github.eltonbgomes.clinica.model.repository.ConsultaRepository;
+import io.github.eltonbgomes.clinica.model.repository.MedicoRepository;
+import io.github.eltonbgomes.clinica.model.repository.PacienteRepository;
+import io.github.eltonbgomes.clinica.rest.dto.ConsultaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -17,10 +23,17 @@ import java.util.List;
 public class ConsultaController {
 
     private final ConsultaRepository repository;
+    private final MedicoRepository medicoRepository;
+    private final PacienteRepository pacienteRepository;
 
     @Autowired
-    public ConsultaController(ConsultaRepository repository) {
-        this.repository = repository;
+    public ConsultaController(
+            ConsultaRepository repository,
+            MedicoRepository medicoRepository,
+            PacienteRepository pacienteRepository) {
+                this.repository = repository;
+                this.medicoRepository = medicoRepository;
+                this.pacienteRepository = pacienteRepository;
     }
 
     @GetMapping
@@ -30,7 +43,29 @@ public class ConsultaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Consulta salvar(@RequestBody @Valid Consulta consulta){
+    public Consulta salvar(@RequestBody ConsultaDTO dto){
+        LocalDate dataConsulta = LocalDate.parse(dto.getDataConsulta(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        Integer idPaciente = dto.getIdPaciente();
+        Integer idMedico = dto.getIdMedico();
+
+        Paciente paciente = pacienteRepository
+                .findById(idPaciente)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST, "Paciente Inexistente."));
+
+        Medico medico = medicoRepository
+                .findById(idMedico)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST, "Médico Inexistente."));
+
+        Consulta consulta = new Consulta();
+
+        consulta.setDataConsulta(dataConsulta);
+        consulta.setHoraConsulta(dto.getHoraConsulta());
+        consulta.setNumConsultorio(dto.getNumConsultorio());
+        consulta.setPaciente(paciente);
+        consulta.setMedico(medico);
+
         return repository.save(consulta);
     }
 
