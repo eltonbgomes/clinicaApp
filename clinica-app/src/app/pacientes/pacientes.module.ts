@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { PacientesRoutingModule } from './pacientes-routing.module';
 import { PacientesFormComponent } from './pacientes-form/pacientes-form.component';
+import { PacientesListaComponent } from './pacientes-lista/pacientes-lista.component';
 
 
 @NgModule({
   declarations: [
-    PacientesFormComponent
+    PacientesFormComponent,
+    PacientesListaComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { PacientesFormComponent } from './pacientes-form/pacientes-form.componen
     FormsModule
   ],
   exports: [
-    PacientesFormComponent
+    PacientesFormComponent,
+    PacientesListaComponent
   ]
 })
 export class PacientesModule { }

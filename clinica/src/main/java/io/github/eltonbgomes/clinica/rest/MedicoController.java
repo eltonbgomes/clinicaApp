@@ -1,6 +1,7 @@
 package io.github.eltonbgomes.clinica.rest;
 
 import io.github.eltonbgomes.clinica.model.entity.Medico;
+import io.github.eltonbgomes.clinica.model.entity.Paciente;
 import io.github.eltonbgomes.clinica.model.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/medicos")
@@ -19,6 +21,11 @@ public class MedicoController {
     @Autowired
     public MedicoController(MedicoRepository repository){
         this.repository = repository;
+    }
+
+    @GetMapping
+    public List<Medico> obterTodos(){
+        return repository.findAll();
     }
 
     @PostMapping

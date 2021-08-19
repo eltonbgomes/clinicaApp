@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { MedicosRoutingModule } from './medicos-routing.module';
 import { MedicosFormComponent } from './medicos-form/medicos-form.component';
+import { MedicosListaComponent } from './medicos-lista/medicos-lista.component';
 
 
 @NgModule({
   declarations: [
-    MedicosFormComponent
+    MedicosFormComponent,
+    MedicosListaComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { MedicosFormComponent } from './medicos-form/medicos-form.component';
     FormsModule
   ],
   exports: [
-    MedicosFormComponent
+    MedicosFormComponent,
+    MedicosListaComponent
   ]
 })
 export class MedicosModule { }

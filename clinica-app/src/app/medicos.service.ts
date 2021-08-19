@@ -12,11 +12,10 @@ export class MedicosService {
   constructor(private http: HttpClient) { }
 
   salvar(medico: Medico): Observable<Medico>{
-    return this.http.post<Medico>('http://localhost:8080/api/medicos/', medico);
+    return this.http.post<Medico>('http://localhost:8080/api/medicos', medico);
   }
 
-  getMedico(): Medico{
-    let medico: Medico = new Medico();
-    return medico;
+  getMedicos(): Observable<Medico[]>{
+    return this.http.get<Medico[]>('http://localhost:8080/api/medicos');
   }
 }

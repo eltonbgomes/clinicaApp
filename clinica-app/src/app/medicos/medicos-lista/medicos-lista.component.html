@@ -1,0 +1,40 @@
+<h1 class="mt-4">Medico</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-success" (click)='novoCadastro()'>
+                <i class="fa fa-plus"></i>Novo
+            </button>
+        </div>
+    </div>
+<br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condesed table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CRM</th>
+                        <th>Especialidade</th>
+                        <th>Idade</th>
+                        <th>Data Cadastro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let medico of medicos">
+                        <td>{{ medico.id }}</td>
+                        <td>{{ medico.nome }}</td>
+                        <td>{{ medico.crm }}</td>
+                        <td>{{ medico.especialidade }}</td>
+                        <td>{{ medico.idade }}</td>
+                        <td>{{ medico.dataCadastro }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

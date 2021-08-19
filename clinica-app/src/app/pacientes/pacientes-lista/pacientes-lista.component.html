@@ -1,0 +1,38 @@
+<h1 class="mt-4">Paciente</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-success" (click)='novoCadastro()'>
+                <i class="fa fa-plus"></i>Novo
+            </button>
+        </div>
+    </div>
+<br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condesed table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Idade</th>
+                        <th>Data Cadastro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let paciente of pacientes">
+                        <td>{{ paciente.id }}</td>
+                        <td>{{ paciente.nome }}</td>
+                        <td>{{ paciente.cpf }}</td>
+                        <td>{{ paciente.idade }}</td>
+                        <td>{{ paciente.dataCadastro }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

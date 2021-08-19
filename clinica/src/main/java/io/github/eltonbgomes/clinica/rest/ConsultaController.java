@@ -1,6 +1,7 @@
 package io.github.eltonbgomes.clinica.rest;
 
 import io.github.eltonbgomes.clinica.model.entity.Consulta;
+import io.github.eltonbgomes.clinica.model.entity.Paciente;
 import io.github.eltonbgomes.clinica.model.repository.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/consultas")
+@CrossOrigin("http://localhost:4200")
 public class ConsultaController {
 
     private final ConsultaRepository repository;
@@ -18,6 +21,11 @@ public class ConsultaController {
     @Autowired
     public ConsultaController(ConsultaRepository repository) {
         this.repository = repository;
+    }
+
+    @GetMapping
+    public List<Consulta> obterTodos(){
+        return repository.findAll();
     }
 
     @PostMapping

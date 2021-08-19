@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Paciente } from '../paciente';
 import { PacientesService } from '../../pacientes.service';
@@ -14,11 +15,17 @@ export class PacientesFormComponent implements OnInit {
   success: boolean = false;
   errors!: String[];
 
-  constructor(private service: PacientesService) {
-    this.paciente = new Paciente();
+  constructor(
+    private service: PacientesService, 
+    private router: Router) {
+      this.paciente = new Paciente();
   }
 
   ngOnInit(): void {
+  }
+
+  voltarListagem(){
+    this.router.navigate(['pacientes-lista']);
   }
 
   onSubmit(){

@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6" ngIf="medico.id">
+            <div class="col-md-6" *ngIf="medico.dataCadastro">
                 <div class="form-group">
                     <label>data cadastro:</label>
                     <input type="text" class="form-control" disabled="true" [ngModel]="medico.dataCadastro" name="dataCadastro">
@@ -61,9 +61,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <button type="submit" class="btn btn-success">
                     <i class="fa fa-save"></i>Cadastrar
+                </button>
+                <button type="button" class="btn btn-warning ml-1" (click)="voltarListagem()">
+                    <i class="fa fa-arrow-alt-circle-left"></i>Voltar
                 </button>
             </div>
         </div>
