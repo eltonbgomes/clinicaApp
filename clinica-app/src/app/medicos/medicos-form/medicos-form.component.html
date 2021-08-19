@@ -5,7 +5,19 @@
 <div class="container">
     <form #medicoForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Médico Salvo/atualizado com Sucesso
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1" *ngIf="medico.id">
                 <div class="form-group">
                     <label>ID:</label>
                     <input type="text" class="form-control" disabled="true" [ngModel]="medico.id" name="id">
@@ -41,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" ngIf="medico.id">
                 <div class="form-group">
                     <label>data cadastro:</label>
                     <input type="text" class="form-control" disabled="true" [ngModel]="medico.dataCadastro" name="dataCadastro">

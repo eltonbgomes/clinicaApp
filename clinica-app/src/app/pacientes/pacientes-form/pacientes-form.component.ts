@@ -27,6 +27,7 @@ export class PacientesFormComponent implements OnInit {
       .subscribe(Response => {
         this.success = true;
         this.errors = []; 
+        this.paciente = Response;
       }, errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;

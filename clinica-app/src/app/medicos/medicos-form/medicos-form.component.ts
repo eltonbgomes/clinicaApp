@@ -11,6 +11,8 @@ import { MedicosService } from '../../medicos.service';
 export class MedicosFormComponent implements OnInit {
 
   medico: Medico;
+  success: boolean = false;
+  errors!: String[];
 
   constructor(private service: MedicosService) { 
     this.medico = new Medico();
@@ -23,8 +25,12 @@ export class MedicosFormComponent implements OnInit {
     this.service
       .salvar(this.medico)
       .subscribe(Response => {
-        console.log(Response);
+        this.success = true;
+        this.errors = []; 
+        this.medico = Response;
+      }, errorResponse => {
+        this.success = false;
+        this.errors = errorResponse.error.errors;
       })
   };
-
 }
