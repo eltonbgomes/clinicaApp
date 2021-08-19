@@ -3,6 +3,23 @@
     <li class="breadcrumb-item active">Consulta</li>
 </ol>
 <div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div lass="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-success" (click)='novoCadastro()'>
@@ -32,9 +49,36 @@
                         <td>{{ medico.especialidade }}</td>
                         <td>{{ medico.idade }}</td>
                         <td>{{ medico.dataCadastro }}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="/medicos-form/{{ medico.id }}">
+                                <i class="fa fa-edit"></i>Editar
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="preparaDelecao(medico)" 
+                                    data-toggle="modal" data-target="#modalDelecao">
+                                <i class="fa fa-trash"></i>Apagar
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div id="modalDelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Apagar o seguinte medico?</h4>
+                </div>
+                <div class="modal-body" *ngIf="medicoSelecionado">
+                    {{ medicoSelecionado.nome }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" (click)="deletarMedico()" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

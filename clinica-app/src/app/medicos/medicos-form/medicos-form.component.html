@@ -1,6 +1,6 @@
 <h1 class="mt-4">Medico</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Cadastro</li>
+    <li class="breadcrumb-item active">{{ medico.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
     <form #medicoForm="ngForm" (ngSubmit)="onSubmit()">
@@ -62,9 +62,14 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" *ngIf="!medico.id">
                     <i class="fa fa-save"></i>Cadastrar
                 </button>
+
+                <button type="submit" class="btn btn-success" *ngIf="medico.id">
+                    <i class="fa fa-save"></i>Atualizar
+                </button>
+
                 <button type="button" class="btn btn-warning ml-1" (click)="voltarListagem()">
                     <i class="fa fa-arrow-alt-circle-left"></i>Voltar
                 </button>

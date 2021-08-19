@@ -12,17 +12,37 @@ import { Medico } from '../medico';
 export class MedicosListaComponent implements OnInit {
 
   medicos: Medico[] = [];
+  medicoSelecionado!: Medico;
+  mensagemSucesso!: string;
+  mensagemErro!: string;
 
   constructor(
     private service: MedicosService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getMedicos()
+    this.service
+      .getMedicos()
       .subscribe(resposta => this.medicos = resposta);
   }
 
   novoCadastro(){
     this.router.navigate(['/medicos-form']);
+  }
+
+  preparaDelecao(medico: Medico){
+    this.medicoSelecionado = medico;
+  }
+
+  deletarMedico(){
+    this.service
+      .deletar(this.medicoSelecionado)
+      .subscribe(
+        response => {
+          this.mensagemSucesso = "Médico deletado com sucesso!";
+          this.ngOnInit();
+      },
+        erro => this.mensagemErro = "Erro ao deletar Medico!"
+      );
   }
 }
