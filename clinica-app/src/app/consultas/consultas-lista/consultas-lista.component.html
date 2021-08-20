@@ -34,7 +34,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Paciente</th>
-                        <th>Medico</th>
+                        <th>Médico</th>
                         <th>Número Consultório</th>
                         <th>Data Cadastro</th>
                         <th>Data Consulta</th>
@@ -44,10 +44,16 @@
                 <tbody>
                     <tr *ngFor="let consulta of consultas">
                         <td>{{ consulta.id }}</td>
-                        <td>{{ consulta.paciente }}</td>
-                        <td>{{ consulta.medico }}</td>
+                        <td *ngFor="let paciente of pacientes">
+                            <p>{{paciente.id}}</p>
+                            <p>{{consulta.idPaciente}}</p>
+                            <p *ngIf="paciente.id == 3">
+                                Elton
+                            </p>
+                        </td>
+                        <td>{{ consulta.idMedico }}</td>
                         <td>{{ consulta.numConsultorio }}</td>
-                        <td>{{ consulta.dataCadastro }}</td>
+                        <td >{{ consulta.dataCadastro }}</td>
                         <td>{{ consulta.dataConsulta }}</td>
                         <td>{{ consulta.horaConsulta }}</td>
                         <td>
@@ -73,7 +79,7 @@
                     <h4>Apagar a seguinte consulta do paciente?</h4>
                 </div>
                 <div class="modal-body" *ngIf="consultaSelecionada">
-                    {{ consultaSelecionada.paciente }}
+                    {{ consultaSelecionada.idPaciente }}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" (click)="deletarConsulta()" data-dismiss="modal">Confirmar</button>

@@ -1,7 +1,7 @@
 export class Consulta {
     id!: number;
-    paciente!: string;
-    medico!: string;
+    idPaciente!: number;
+    idMedico!: number;
     numConsultorio!: number;
     dataCadastro!: string;
     dataConsulta!: string;

@@ -33,6 +33,14 @@ export class ConsultasFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.pacienteService
+      .getPacientes()
+      .subscribe(response => this.pacientes = response);
+
+    this.medicoService
+      .getMedicos()
+      .subscribe(response => this.medicos = response);
+
     let params : Params = this.activatedRoute.params;
     if(params.value.id){
       this.id = params.value.id;
@@ -46,7 +54,7 @@ export class ConsultasFormComponent implements OnInit {
   }
 
   voltarListagem(){
-    this.router.navigate(['pacientes-lista']);
+    this.router.navigate(['consultas-lista']);
   }
 
   onSubmit(){

@@ -12,6 +12,7 @@ import { MedicosModule } from './medicos/medicos.module';
 import { ConsultasModule } from './consultas/consultas.module';
 import { PacientesService } from './pacientes.service';
 import { MedicosService } from './medicos.service';
+import { ConsultasService } from './consultas.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MedicosService } from './medicos.service';
   ],
   providers: [
     PacientesService,
-    MedicosService
+    MedicosService,
+    ConsultasService
   ],
   bootstrap: [AppComponent]
 })

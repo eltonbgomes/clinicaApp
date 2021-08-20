@@ -44,7 +44,7 @@ public class ConsultaController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Consulta salvar(@RequestBody ConsultaDTO dto){
-        LocalDate dataConsulta = LocalDate.parse(dto.getDataConsulta(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dataConsulta = LocalDate.parse(dto.getDataConsulta(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         Integer idPaciente = dto.getIdPaciente();
         Integer idMedico = dto.getIdMedico();
 

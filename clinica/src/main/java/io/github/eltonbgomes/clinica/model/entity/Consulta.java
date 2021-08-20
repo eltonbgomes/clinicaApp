@@ -26,11 +26,11 @@ public class Consulta {
     private Integer NumConsultorio;
 
     @Column(name = "data_cadastro", updatable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataCadastro;
 
     @Column(name = "data_consulta")
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataConsulta;
 
     @Column(name = "hora_consulta")
