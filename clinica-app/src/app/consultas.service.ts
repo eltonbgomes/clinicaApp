@@ -30,6 +30,6 @@ export class ConsultasService {
   }
 
   getConsultaById(id: number) : Observable<Consulta>{
-    return this.http.get<any>(`${this.apiURL}/${id}`);
+    return this.http.get<any>(`${this.apiURL}${id}`);
   }
 }
