@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Medico } from './medicos/medico';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicosService {
 
+  apiURL: string = environment.apiURL + "api/medicos/";
+
   constructor(private http: HttpClient) { }
 
   salvar(medico: Medico): Observable<Medico>{
-    return this.http.post<Medico>('http://localhost:8080/api/medicos', medico);
+    return this.http.post<Medico>(`${this.apiURL}`, medico);
   }
 
   atualizar(medico: Medico): Observable<any>{
-    return this.http.put<Medico>(`http://localhost:8080/api/medicos/${medico.id}`, medico);
+    return this.http.put<Medico>(`${this.apiURL}${medico.id}`, medico);
   }
 
   deletar(medico: Medico): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/api/medicos/${medico.id}`);
+    return this.http.delete<any>(`${this.apiURL}${medico.id}`);
   }
 
   getMedicos(): Observable<Medico[]>{
-    return this.http.get<Medico[]>('http://localhost:8080/api/medicos');
+    return this.http.get<Medico[]>(`${this.apiURL}`);
   }
 
   getMedicoById(id: number) : Observable<Medico>{
-    return this.http.get<any>(`http://localhost:8080/api/medicos/${id}`);
+    return this.http.get<any>(`${this.apiURL}${id}`);
   }
 }
