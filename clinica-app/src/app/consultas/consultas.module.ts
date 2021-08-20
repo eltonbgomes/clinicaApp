@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { ConsultasRoutingModule } from './consultas-routing.module';
 import { ConsultasFormComponent } from './consultas-form/consultas-form.component';
+import { ConsultasListaComponent } from './consultas-lista/consultas-lista.component';
 
 
 @NgModule({
   declarations: [
-    ConsultasFormComponent
+    ConsultasFormComponent,
+    ConsultasListaComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { ConsultasFormComponent } from './consultas-form/consultas-form.componen
     FormsModule
   ],
   exports: [
-    ConsultasFormComponent
+    ConsultasFormComponent,
+    ConsultasListaComponent
   ]
 })
 export class ConsultasModule { }

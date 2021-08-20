@@ -3,62 +3,90 @@
     <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
-    <form>
+    <form  #pacienteForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Consulta Salva/atualizada com Sucesso
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-1">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input type="text" class="form-control" disabled="true">
+                    <input type="text" class="form-control" disabled="true" [ngModel]="consulta.id" name="id">
                 </div>
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Paciente:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="consulta.paciente" name="paciente">
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <label>Medico:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="consulta.medico" name="medico">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label>especialidade:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="consulta.medico" name="medico">
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-group">
-                    <label>data agendada:</label>
-                    <input type="text" class="form-control">
+                    <label>data consulta:</label>
+                    <input type="text" class="form-control" [(ngModel)]="consulta.dataConsulta" name="dataConsulta">
                 </div>
             </div>
 
             <div class="col-md-2">
+                <div class="form-group">
+                    <label>hora consulta:</label>
+                    <input type="text" class="form-control" [(ngModel)]="consulta.horaConsulta" name="horaConsulta">
+                </div>
+            </div>
+
+            <div class="col-md-3">
                 <div class="form-group">
                     <label>Numero Consultório:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="consulta.numConsultorio" name="numConsultorio">
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="form-group">
                     <label>data cadastro:</label>
-                    <input type="text" class="form-control" disabled="true">
+                    <input type="text" class="form-control" disabled="true" [ngModel]="consulta.dataCadastro" name="dataCadastro">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" *ngIf="!consulta.id">
                     <i class="fa fa-save"></i>Cadastrar
+                </button>
+
+                <button type="submit" class="btn btn-primary" *ngIf="consulta.id">
+                    <i class="fa fa-save"></i>Atualizar
+                </button>
+
+                <button type="button" class="btn btn-warning ml-1" (click)="voltarListagem()">
+                    <i class="fa fa-arrow-alt-circle-left"></i>Voltar
                 </button>
             </div>
         </div>

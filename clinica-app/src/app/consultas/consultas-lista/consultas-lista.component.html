@@ -1,0 +1,85 @@
+<h1 class="mt-4">Consulta</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Lista de Consultas</li>
+</ol>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div lass="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-success" (click)='novoCadastro()'>
+                <i class="fa fa-plus"></i>Novo
+            </button>
+        </div>
+    </div>
+<br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condesed table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Medico</th>
+                        <th>Número Consultório</th>
+                        <th>Data Cadastro</th>
+                        <th>Data Consulta</th>
+                        <th>Hora Consulta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let consulta of consultas">
+                        <td>{{ consulta.id }}</td>
+                        <td>{{ consulta.paciente }}</td>
+                        <td>{{ consulta.medico }}</td>
+                        <td>{{ consulta.numConsultorio }}</td>
+                        <td>{{ consulta.dataCadastro }}</td>
+                        <td>{{ consulta.dataConsulta }}</td>
+                        <td>{{ consulta.horaConsulta }}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="/consultas-form/{{ consulta.id }}">
+                                <i class="fa fa-edit"></i>Editar
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="preparaDelecao(consulta)" 
+                                    data-toggle="modal" data-target="#modalDelecao">
+                                <i class="fa fa-trash"></i>Apagar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="modalDelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Apagar a seguinte consulta do paciente?</h4>
+                </div>
+                <div class="modal-body" *ngIf="consultaSelecionada">
+                    {{ consultaSelecionada.paciente }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" (click)="deletarConsulta()" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
