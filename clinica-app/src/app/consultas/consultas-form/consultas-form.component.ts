@@ -7,7 +7,7 @@ import { Medico } from '../../medicos/medico';
 import { Paciente } from '../../pacientes/paciente';
 
 import { Consulta } from '../consulta';
-import { ConsultasService } from 'src/app/consultas.service';
+import { ConsultasService } from '../../consultas.service';
 
 @Component({
   selector: 'app-consultas-form',

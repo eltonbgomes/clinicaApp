@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/consultas")
-@CrossOrigin("http://localhost:4200")
 public class ConsultaController {
 
     private final ConsultaRepository repository;
